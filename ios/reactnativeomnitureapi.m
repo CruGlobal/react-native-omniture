@@ -28,4 +28,11 @@ RCT_EXPORT_METHOD(trackState:(NSString *)page contextData:(NSDictionary *)contex
 
 }
 
+RCT_EXPORT_METHOD(getMarketingCloudId:(RCTResponseSenderBlock)callback)
+{
+    NSLog(@"Calling Get Marketing Cloud Id @");
+    NSString *mcid = [ADBMobile visitorMarketingCloudID];
+    callback(@[[NSNull null], mcid]);
+}
+
 @end
