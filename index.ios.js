@@ -17,4 +17,7 @@ module.exports = {
       callback(response);
     });
   },
+  syncMarketingCloudId : (id)  => {
+    RNOmniture.syncMarketingCloudId(id)
+  },
 }

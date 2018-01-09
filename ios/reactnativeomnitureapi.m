@@ -35,4 +35,10 @@ RCT_EXPORT_METHOD(getMarketingCloudId:(RCTResponseSenderBlock)callback)
     callback(@[[NSNull null], mcid]);
 }
 
+RCT_EXPORT_METHOD(syncMarketingCloudId:(NSString *)marketingCloudId)
+{
+    NSLog(@"Syncing Marketing Cloud ID @");
+    [ADBMobile visitorSyncIdentifierWithType:@"cru_visitor_id" identifier:marketingCloudId authenticationState:ADBMobileVisitorAuthenticationStateAuthenticated];
+}
+
 @end
