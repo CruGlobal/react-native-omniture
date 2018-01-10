@@ -11,5 +11,18 @@ module.exports = {
   },
   trackState : (str, obj)  => {
     RNOmniture.trackState(str, obj)
-  }
+  },
+  loadMarketingCloudId : (callback)  => {
+    RNOmniture.getMarketingCloudId(
+      (message) => {
+      	console.log('error: ' + message);
+      },
+      (id) => {
+	callback(id);
+      }
+    );
+  },
+  syncMarketingCloudId : (id)  => {
+    RNOmniture.syncMarketingCloudId(id)
+  },
 }

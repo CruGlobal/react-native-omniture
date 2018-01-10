@@ -5,6 +5,9 @@ import android.widget.Toast;
 
 import com.adobe.mobile.Analytics;
 import com.adobe.mobile.Config;
+import com.adobe.mobile.Visitor;
+import com.adobe.mobile.VisitorID;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -12,6 +15,7 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.uimanager.IllegalViewOperationException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,16 +110,33 @@ public class omnitureImplementation extends ReactContextBaseJavaModule {
     public String getName() {
         return "omnitureImplementation";
     }
+
     @ReactMethod
     public void trackAction(String state, final ReadableMap contextData) {
         Analytics.trackAction((String)state, this.convert(contextData));
         // String a = Analytics.trackingTimedActionExists("motologin")?"yes":"no";
         // Toast.makeText(getReactApplicationContext(),a,Toast.LENGTH_LONG).show();
     }
+
     @ReactMethod
     public void trackState(String state, final ReadableMap contextData) {
         Analytics.trackState((String)state, this.convert(contextData));
     }
+
+    @ReactMethod
+    public void getMarketingCloudId(Callback errorCallback, Callback successCallback) {
+        try {
+            successCallback.invoke(Visitor.getMarketingCloudId());
+        } catch (IllegalViewOperationException e) {
+            errorCallback.invoke(e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void syncMarketingCloudId(String id) {
+        Visitor.syncIdentifier("cru_visitor_id", id, VisitorID.VisitorIDAuthenticationState.VISITOR_ID_AUTHENTICATION_STATE_AUTHENTICATED);
+    }
+
     @ReactMethod
     public void setEnvironment() {
         Toast.makeText(getReactApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
