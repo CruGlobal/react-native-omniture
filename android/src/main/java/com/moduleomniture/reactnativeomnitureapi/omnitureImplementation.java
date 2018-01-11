@@ -124,6 +124,11 @@ public class omnitureImplementation extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void collectLifecycleData(final ReadableMap contextData) {
+        Config.collectLifecycleData(getCurrentActivity(), this.convert(contextData));
+    }
+
+    @ReactMethod
     public void getMarketingCloudId(Callback errorCallback, Callback successCallback) {
         try {
             successCallback.invoke(Visitor.getMarketingCloudId());

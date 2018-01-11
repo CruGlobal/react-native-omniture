@@ -20,4 +20,7 @@ module.exports = {
   syncMarketingCloudId : (id)  => {
     RNOmniture.syncMarketingCloudId(id)
   },
+  collectLifecycleData : (obj)  => {
+    RNOmniture.collectLifecycleData(obj)
+  },
 }

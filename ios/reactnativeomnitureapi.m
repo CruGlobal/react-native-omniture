@@ -25,7 +25,12 @@ RCT_EXPORT_METHOD(trackState:(NSString *)page contextData:(NSDictionary *)contex
 {
     NSLog(@"Calling Track State %@", page);
     [ADBMobile trackState:page data:contextData];
+}
 
+RCT_EXPORT_METHOD(collectLifecycleData:(NSDictionary *)contextData)
+{
+    NSLog(@"Calling collect lifecyle data @");
+    [ADBMobile collectLifecycleDataWithAdditionalData:contextData];
 }
 
 RCT_EXPORT_METHOD(getMarketingCloudId:(RCTResponseSenderBlock)callback)
