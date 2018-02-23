@@ -17,8 +17,8 @@ module.exports = {
       callback(response);
     });
   },
-  syncMarketingCloudId : (id)  => {
-    RNOmniture.syncMarketingCloudId(id)
+  syncIdentifier : (id)  => {
+    RNOmniture.syncIdentifier(id)
   },
   collectLifecycleData : (obj)  => {
     RNOmniture.collectLifecycleData(obj)
