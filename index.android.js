@@ -14,8 +14,8 @@ module.exports = {
   },
   loadMarketingCloudId : (callback)  => {
     RNOmniture.getMarketingCloudId(
-      (message) => {
-      	console.log('error: ' + message);
+      () => {
+        callback(null);
       },
       (id) => {
         callback(id);
