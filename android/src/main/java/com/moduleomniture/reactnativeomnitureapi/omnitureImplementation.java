@@ -139,7 +139,7 @@ public class omnitureImplementation extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void syncIdentifier(String id) {
-        Visitor.syncIdentifier("ssoguid", id, VisitorID.VisitorIDAuthenticationState.VISITOR_ID_AUTHENTICATION_STATE_AUTHENTICATED);
+        Visitor.syncIdentifier("grmpid", id, VisitorID.VisitorIDAuthenticationState.VISITOR_ID_AUTHENTICATION_STATE_AUTHENTICATED);
     }
 
     @ReactMethod
